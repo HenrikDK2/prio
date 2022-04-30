@@ -1,6 +1,6 @@
 # Maintainer: Henrik Mundt Milo <henrik265@outlook.dk>
 pkgname="prio"
-pkgver=r10.ade92bd
+pkgver=r12.430049e
 pkgrel=1
 pkgdesc="Easily configurable daemon to adjust niceness and ionice values"
 arch=("x86_64")
@@ -21,7 +21,6 @@ package() {
 
 	mkdir -p "$pkgdir/opt/$pkgname"
 	cp -f main.py "$pkgdir/opt/$pkgname"
-	cp config.json "$pkgdir/opt/$pkgname"
 	cp LICENSE "$pkgdir/opt/$pkgname"
 
 	install -Dm644 data/prio.service "$pkgdir/etc/systemd/system/prio.service"

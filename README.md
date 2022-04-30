@@ -14,7 +14,7 @@ Example: `systemctl enable prio.service`
 
 ## Configuration
 
-Configuration is neccesary to change the priorities of the programs relevant for you.
+Before starting the service you need to make a configuration file which is neccesary to change the priorities of the programs relevant for you.
 
 ### Example config file
 
@@ -27,7 +27,7 @@ Configuration is neccesary to change the priorities of the programs relevant for
 }
 ```
 
-_The config is located at `/opt/prio/config.json`. Any changes requires restarting the service `systemctl restart prio.service` or rebooting._
+_The config have to be located at `/opt/prio/config.json`. Any changes requires restarting the service `systemctl restart prio.service` or rebooting._
 
 ### Main JSON object keys
 

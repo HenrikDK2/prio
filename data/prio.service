@@ -5,7 +5,7 @@ Conflicts=getty@tty1.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /usr/bin/dummy_service.py
+ExecStart=/usr/bin/python3 /opt/prio/main.py
 StandardInput=tty-force
 
 [Install]

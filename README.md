@@ -4,7 +4,17 @@ Prio is a small daemon to easily adjust both niceness and ionice values of proce
 
 It's created to be simple and easily configurable, might be further enhanced if there is demand for this service.
 
+## Install service
+
+Clone the project, and go into the build folder. In the terminal run `makepkg` and wait for the package to build. Once it's build use your package manager to install the package. Example would be `yay -U package` or `sudo pacman -U package`
+
+After installing the package remember to enable the service after making the neccesary configuration changes below.
+
+Example: `systemctl enable prio.service`
+
 ## Configuration
+
+Configuration is neccesary to change the priorities of the programs relevant for you.
 
 ### Example config file
 
@@ -17,7 +27,7 @@ It's created to be simple and easily configurable, might be further enhanced if 
 }
 ```
 
-_Should be located at "$home/.config/prio/config.json", it will automically create the folder and file if it doesn't exist upon launch._
+_Should be located at "$home/.config/prio/config.json", it will use the dummy version above if the file doesn't exist upon launch. Any changes requires restarting the service `systemctl restart prio.service` or rebooting._
 
 ### Main JSON object keys
 

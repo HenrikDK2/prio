@@ -5,8 +5,7 @@ from subprocess import run
 from time import sleep
 
 home = os.path.expanduser('~')
-configFolderSrc = home+'/.config/prio'
-configFileSrc = configFolderSrc+"/config.json"
+configFileSrc = home+'/.config/prio/config.json'
 
 
 def renice(nice, pid):
@@ -73,8 +72,12 @@ def main_loop(config):
     main_loop(config)
 
 
-with open(configFileSrc, "r") as file:
-    file = open(configFileSrc, "r")
+if os.path.exists(configFileSrc):
+    fileSrc = configFileSrc
+else:
+    fileSrc = "/opt/prio/data/config.json"
+
+with open(fileSrc, "r") as file:
     config = json.loads(file.read())
 
     # Defaults

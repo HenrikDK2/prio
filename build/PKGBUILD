@@ -1,0 +1,26 @@
+# Maintainer: Henrik Mundt Milo <henrik265@outlook.dk>
+pkgname="prio"
+pkgver=r1.4369aad
+pkgrel=1
+pkgdesc="Easily configurable daemon to adjust niceness and ionice values"
+arch=("x86_64")
+url="https://github.com/HenrikDK2/prio"
+license=('MIT')
+depends=("python>=3.10.0", "python<4.0.0")
+makedepends=('git')
+source=("git+$url")
+md5sums=('SKIP')
+
+pkgver() {
+ 	cd "$srcdir/$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+	cd "$srcdir/$pkgname"
+	mkdir -p "$pkgdir/opt/$pkgname"
+	cp -rf * "$pkgdir/opt/$pkgname"
+	cp -rf data/prio.service "$pkgdir/etc/systemd/system"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}

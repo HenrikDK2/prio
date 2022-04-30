@@ -1,11 +1,13 @@
 [Unit]
-Description=Prio deamon service
+Description=Prio Deamon Service
 After=multi-user.target
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/python3 /opt/prio/main.py
 StandardInput=tty-force
+KillMode=none
+TimeoutStartSec=30
 
 [Install]
 WantedBy=multi-user.target

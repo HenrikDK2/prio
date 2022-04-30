@@ -4,8 +4,6 @@ from os import path
 from subprocess import run
 from time import sleep
 
-configFileSrc = path.expanduser('~/.config/prio/config.json')
-
 
 def renice(nice, pid):
     run(f"renice {nice} -p {pid}", shell=True, stdout=False)
@@ -71,21 +69,20 @@ def main_loop(config):
     main_loop(config)
 
 
-if path.exists(configFileSrc):
-    fileSrc = configFileSrc
+try:
+    file = open("config.json", "r")
+except:
+    file = open("/opt/prio/config.json", "r")
+
+config = json.loads(file.read())
+
+# Defaults
+if "update_freq" not in config:
+    config["update_freq"] = 30
+
+# Run loop
+if "processes" in config:
+    main_loop(config)
 else:
-    fileSrc = "/opt/prio/data/config.json"
-
-with open(fileSrc, "r") as file:
-    config = json.loads(file.read())
-
-    # Defaults
-    if "update_freq" not in config:
-        config["update_freq"] = 30
-
-    # Run loop
-    if "processes" in config:
-        main_loop(config)
-    else:
-        raise("Processes array in JSON config file is required, find and configure it: "+configFileSrc)
-        exit(1)
+    raise("Processes array in JSON config file is required, find and configure it: "+configFileSrc)
+    exit(1)

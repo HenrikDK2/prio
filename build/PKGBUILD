@@ -1,6 +1,6 @@
 # Maintainer: Henrik Mundt Milo <henrik265@outlook.dk>
 pkgname="prio"
-pkgver=r12.430049e
+pkgver=r14.e62d60e
 pkgrel=1
 pkgdesc="Easily configurable daemon to adjust niceness and ionice values"
 arch=("x86_64")

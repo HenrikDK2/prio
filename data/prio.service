@@ -6,8 +6,9 @@ After=multi-user.target
 Type=simple
 ExecStart=/usr/bin/python3 /opt/prio/main.py
 StandardInput=tty-force
+Restart=always
 KillMode=none
-TimeoutStartSec=30
+TimeoutSec=900
 
 [Install]
 WantedBy=multi-user.target

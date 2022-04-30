@@ -1,11 +1,10 @@
-import os
 import json
 import shutil
+from os import path
 from subprocess import run
 from time import sleep
 
-home = os.path.expanduser('~')
-configFileSrc = home+'/.config/prio/config.json'
+configFileSrc = path.expanduser('~/.config/prio/config.json')
 
 
 def renice(nice, pid):
@@ -72,7 +71,7 @@ def main_loop(config):
     main_loop(config)
 
 
-if os.path.exists(configFileSrc):
+if path.exists(configFileSrc):
     fileSrc = configFileSrc
 else:
     fileSrc = "/opt/prio/data/config.json"
